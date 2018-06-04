@@ -21,6 +21,4 @@ script:
   - gnatprove -d -P minimal.gpr -f  --output-header --prover=cvc4 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
   - ls $PWD/gnatprove
   - cvc4 $PWD/gnatprove/nonlinear.adb_4_11_postcondition.smt2
-  - cvc4 $PWD/gnatprove/nonlinear.adb_4_11_postcondition2.smt2
   - gnatprove -d -P minimal.gpr -f  --output-header --prover=z3 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
-  # - cvc4 $PWD/gnatprove/find_p.adb_16_33_loop_invariant_preserv.smt2
