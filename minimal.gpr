@@ -1,0 +1,12 @@
+project Minimal is
+
+  for Source_Dirs use (".");
+
+  package Prove is
+    for Switches use ("--mode=prove",
+                      "--report=statistics",
+                      "--proof=per_path",
+                      "--warnings=continue");
+  end Prove;
+
+end Minimal;

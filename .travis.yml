@@ -15,3 +15,10 @@ install:
   - which cvc4
   - file cvc4
   - uname -a
+
+script:
+  - gnatprove -d -P minimal.gpr -f  --output-header --prover=altergo --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
+  - gnatprove -d -P minimal.gpr -f  --output-header --prover=cvc4 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
+  - gnatprove -d -P minimal.gpr -f  --output-header --prover=z3 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
+  # - cat $PWD/gnatprove/gnatprove.out
+  # - cvc4 $PWD/gnatprove/find_p.adb_16_33_loop_invariant_preserv.smt2
