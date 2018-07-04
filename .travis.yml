@@ -15,4 +15,4 @@ install:
   - export PATH=/opt/gnat-community-2018/bin:$PATH
 
 script:
-  - gnatprove -P minimal.gpr --level=4 nonlinear.adb
+  - gnatprove -P minimal.gpr --level=1 nonlinear.adb
