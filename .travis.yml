@@ -10,7 +10,7 @@ cache:
 
 install:
   # check if GNAT Community is already in the cache, else install it
-  - test -d $GNAT_COMMUNITY_PATH || ./scripts/install-dependencies.sh
+  - test -f $GNAT_COMMUNITY_PATH/bin/gnatprove || ./scripts/install-dependencies.sh
   # export PATH
   - export PATH=/opt/gnat-community-2018/bin:$PATH
 
