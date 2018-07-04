@@ -1,8 +1,17 @@
 language: c
 
+env:
+  global:
+    - GNAT_COMMUNITY_PATH=/opt/gnat-community-2018
+
+cache:
+  directories:
+    - $GNAT_COMMUNITY_PATH
+
 install:
-  - ./scripts/install-dependencies.sh
-  - sh ./gnat_community_install_script/install_package.sh ./gnat-community-2018 /opt/gnat-community-2018
+  # check if GNAT Community is already in the cache, else install it
+  - test -d $GNAT_COMMUNITY_PATH || ./scripts/install-dependencies.sh
+  # export PATH
   - export PATH=/opt/gnat-community-2018/bin:$PATH
 
 script:
