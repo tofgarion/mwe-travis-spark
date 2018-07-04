@@ -1,24 +1,11 @@
 language: c
-env:
-  - WHYCONF=$PWD/.why3.conf
 
 install:
   - ./scripts/install-dependencies.sh
-  - export PATH=$PWD/z3-4.6.0-x64-ubuntu-14.04/bin:$PATH
-  - export PATH=$PWD:$PATH
-  - export PATH=$PWD/spark-discovery-gpl-2017-x86_64-linux-bin/bin:$PATH
-  - $PWD/spark-discovery-gpl-2017-x86_64-linux-bin/libexec/spark/bin/why3config --detect-provers
-  - cvc4 --version
-  - cat /home/travis/.why3.conf
-  - cp /home/travis/.why3.conf $PWD
-  - echo $PATH
-  - which cvc4
-  - file cvc4
-  - uname -a
+  - sh ./gnat_community_install_script/install_package.sh ./gnat-community-2018 /opt/gnat-community-2018
+  - mkdir -p /opt/gnat-community-2018
+  - export PATH=/opt/gnat-community-2018/bin:$PATH
 
 script:
-  - gnatprove -d -P minimal.gpr -f  --output-header --prover=altergo --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
-  - gnatprove -d -P minimal.gpr -f  --output-header --prover=cvc4 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
-  - ls $PWD/gnatprove
-  - cvc4 $PWD/gnatprove/nonlinear.adb_4_11_postcondition.smt2
-  - gnatprove -d -P minimal.gpr -f  --output-header --prover=z3 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
+  - gnatprove -P minimal.gpr --level=4 nonlinear.adb
+  # - gnatprove -d -P minimal.gpr -f  --output-header --prover=cvc4 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
