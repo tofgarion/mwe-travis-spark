@@ -3,9 +3,7 @@ language: c
 install:
   - ./scripts/install-dependencies.sh
   - sh ./gnat_community_install_script/install_package.sh ./gnat-community-2018 /opt/gnat-community-2018
-  - mkdir -p /opt/gnat-community-2018
   - export PATH=/opt/gnat-community-2018/bin:$PATH
 
 script:
   - gnatprove -P minimal.gpr --level=4 nonlinear.adb
-  # - gnatprove -d -P minimal.gpr -f  --output-header --prover=cvc4 --timeout=1000 --steps=1000 --why3-conf=/home/travis/build/tofgarion/spark-by-example/.why3.conf nonlinear.adb
