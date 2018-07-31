@@ -1,0 +1,6 @@
+* Minimal Working Example to use Travis CI with SPARK
+
+  This is a simple MWE to show how to configure a SPARK 2014 project
+  with Travis CI. This uses Adacore [[https://github.com/AdaCore/gnat_community_install_script][gnat_community_install_script]]. The
+  Travis configuration is greatly inspired by Adacore configuration in
+  [[https://github.com/AdaCore/Ada_Drivers_Library][Ada Drivers Library]].
